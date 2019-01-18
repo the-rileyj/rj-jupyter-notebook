@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  rj-notebook:
+      container_name: "rj-notebook-container"
+      command: "start-notebook.sh --NotebookApp.token=''"
+      image: "jupyter/tensorflow-notebook"
+      environment:
+        - JUPYTER_ENABLE_LAB=no
+      volumes:
+        - "./notebooks:/home/jovyan/work"
+      ports:
+        - "8888:8888"
+      restart: always
+      networks:
+        - rjnet
+
+networks:
+  rjnet:
+    name: rjnewsite_default
