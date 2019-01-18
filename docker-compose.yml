@@ -9,8 +9,8 @@ services:
         - JUPYTER_ENABLE_LAB=no
       volumes:
         - "./notebooks:/home/jovyan/work"
-      ports:
-        - "80:8888"
+      expose:
+        - "8888"
       restart: always
       networks:
         - rjnet
