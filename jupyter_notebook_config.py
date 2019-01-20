@@ -7,7 +7,7 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.token = ''
 
 # Place where I will be mounting the volume with my notebooks to
-c.NotebookApp.notebook_dir = '/home/jovyan/notebooks'
+c.NotebookApp.notebook_dir = '/home/jovyan/work'
 
 # Run Jupyter as root user
 c.NotebookApp.allow_root = True

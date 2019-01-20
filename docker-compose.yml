@@ -4,13 +4,17 @@ services:
   rj-notebook:
       build: .
       container_name: "rj-notebook-container"
-      volumes:
-        - "./notebooks:/home/jovyan/notebooks"
+      environment:
+        - "NB_UID=1001"
+        - "GRANT_SUDO=yes"
       expose:
         - "8888"
       restart: always
       networks:
         - rjnet
+      user: root
+      volumes:
+        - "./notebooks:/home/jovyan/work"
 
 networks:
   rjnet:
