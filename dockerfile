@@ -4,6 +4,8 @@ FROM golang:alpine AS buildenv
 # git for getting dependencies residing on github
 RUN apk add --no-cache gcc git musl-dev
 
+RUN echo TEST
+
 WORKDIR /go/src/github.com/the-rileyj/pipr
 
 RUN git clone https://github.com/the-rileyj/pipr .
@@ -11,17 +13,14 @@ RUN git clone https://github.com/the-rileyj/pipr .
 # Get dependencies locally, but don't install
 RUN go get -d ./...
 
-ENV GOOS linux
-ENV GOARCH amd64
-
-# Compile program with local dependencies
-RUN go build -o pipr
+# Compile program statically linked with local dependencies
+RUN env GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -a -v -o pipr
 
 FROM jupyter/tensorflow-notebook
 
 EXPOSE 80
 
-ENV PYTHONPATH "$PYTHONPATH:/home/jovyan/work/Utils/"
+RUN env PYTHONPATH=$PYTHONPATH:/home/jovyan/work/Utils/
 
 USER root
 
@@ -32,6 +31,8 @@ RUN sudo apt-get update && \
 COPY --from=buildenv /go/src/github.com/the-rileyj/pipr/pipr /usr/local/bin
 
 RUN chmod +x /usr/local/bin/pipr
+
+ENV REQUIREMENTS /home/jovyan/requirements.txt
 
 USER jovyan
 
