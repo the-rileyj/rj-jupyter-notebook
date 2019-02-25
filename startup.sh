@@ -1,3 +1,5 @@
+docker-compose down
+
 docker-compose up --build -d
 
-hohup pipr -hr -rp ./requirements.txt & > log.txt
+nohup pipr -hr -rp ./requirements.txt & > log.txt
