@@ -14,6 +14,7 @@ services:
         - rjnet
       user: root
       volumes:
+        - "./requirements.txt:/home/jovyan/requirements.txt"
         - "./notebooks:/home/jovyan/work"
 
 networks:
