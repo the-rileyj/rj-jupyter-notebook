@@ -8,6 +8,7 @@ backcall==0.1.0
 beautifulsoup4==4.6.3
 bleach==3.0.2
 bokeh==0.13.0
+bs4==0.0.1
 certifi==2018.11.29
 cffi==1.11.5
 chardet==3.0.4
@@ -27,6 +28,7 @@ gast==0.2.1.post0
 gmpy2==2.0.8
 grpcio==1.16.0
 h5py==2.7.1
+html5lib==1.0.1
 idna==2.8
 imageio==2.4.1
 ipykernel==5.1.0
@@ -46,6 +48,7 @@ Keras-Applications==1.0.6
 Keras-Preprocessing==1.0.5
 kiwisolver==1.0.1
 llvmlite==0.23.0
+lxml==4.3.1
 Mako==1.0.7
 Markdown==2.6.11
 MarkupSafe==1.1.0
