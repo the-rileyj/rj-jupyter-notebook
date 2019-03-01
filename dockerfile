@@ -24,26 +24,26 @@ ENV PYTHONPATH $PYTHONPATH:/home/jovyan/work/Utils/
 
 USER root
 
-COPY ./dependency-lists/apt-requirements.txt .
+COPY ./dependency-lists/apt-dependencies.txt .
 
-RUN sudo apt update && \
-    sudo apt install -y $(grep -E "^\s+" apt-requirements.txt  | tr "\n" " ") && \
+RUN sudo apt-get update && \
+    sudo apt-get install -y $(grep -E "^\s+" apt-dependencies.txt  | tr "\n" " ") && \
     curl https://raw.githubusercontent.com/the-rileyj/InstallVimWorkSpace/master/VimInstaller.sh -s | bash
 
 COPY --from=buildenv /go/src/github.com/the-rileyj/rjin/rjin /usr/local/bin
 
 RUN chmod +x /usr/local/bin/rjin
 
-ENV REQUIREMENTS /home/jovyan/dependency-lists/python-requirements.txt
+ENV RJIN_DEPENDENCIES /home/jovyan/dependency-lists/
 
 USER jovyan
 
-COPY ./dependency-lists/python-requirements.txt .
+COPY ./dependency-lists/python-dependencies.txt .
 
-RUN pip install --no-cache-dir -r python-requirements.txt
+RUN pip install --no-cache-dir -r python-dependencies.txt
 
 # This is to prevent any collisions when we attach the requirements file
 # in the repo for watching changes
-RUN rm python-requirements.txt && rm apt-requirements.txt
+RUN rm python-dependencies.txt && rm apt-dependencies.txt
 
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
