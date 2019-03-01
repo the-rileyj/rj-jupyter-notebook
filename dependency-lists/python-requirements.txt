@@ -58,6 +58,7 @@ mpmath==1.1.0
 nbconvert==5.3.1
 nbformat==4.4.0
 networkx==2.2
+nltk==3.4
 notebook==5.7.2
 numba==0.38.1
 numexpr==2.6.9
@@ -99,6 +100,7 @@ scikit-learn==0.20.2
 scipy==1.1.0
 seaborn==0.9.0
 Send2Trash==1.5.0
+singledispatch==3.4.0.3
 six==1.12.0
 SQLAlchemy==1.2.15
 statsmodels==0.9.0

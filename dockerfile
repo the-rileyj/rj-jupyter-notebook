@@ -34,7 +34,7 @@ COPY --from=buildenv /go/src/github.com/the-rileyj/rjin/rjin /usr/local/bin
 
 RUN chmod +x /usr/local/bin/rjin
 
-ENV REQUIREMENTS /home/jovyan/python-requirements.txt
+ENV REQUIREMENTS /home/jovyan/dependency-lists/python-requirements.txt
 
 USER jovyan
 
