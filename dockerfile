@@ -24,10 +24,10 @@ ENV PYTHONPATH $PYTHONPATH:/home/jovyan/work/Utils/
 
 USER root
 
-COPY ./dependency-lists/apt-get-dependencies.txt .
+COPY ./dependency-lists/apt-dependencies.txt .
 
 RUN sudo apt-get update && \
-    sudo apt-get install -y $(grep -E "^\s+" apt-get-dependencies.txt  | tr "\n" " ") && \
+    sudo apt-get install -y $(grep -E "^\s+" apt-dependencies.txt  | tr "\n" " ") && \
     curl https://raw.githubusercontent.com/the-rileyj/InstallVimWorkSpace/master/VimInstaller.sh -s | bash
 
 COPY --from=buildenv /go/src/github.com/the-rileyj/rjin/rjin /usr/local/bin
@@ -44,6 +44,6 @@ RUN pip install --no-cache-dir -r python-dependencies.txt
 
 # This is to prevent any collisions when we attach the requirements file
 # in the repo for watching changes
-RUN rm python-dependencies.txt && rm apt-get-dependencies.txt
+RUN rm python-dependencies.txt && rm apt-dependencies.txt
 
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
