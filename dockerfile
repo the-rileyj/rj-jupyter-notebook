@@ -35,6 +35,9 @@ COPY --from=buildenv /go/src/github.com/the-rileyj/rjin/rjin /usr/local/bin
 RUN chmod +x /usr/local/bin/rjin
 
 ENV RJIN_DEPENDENCIES /home/jovyan/dependency-lists/
+ENV RJIN_CONFIG /home/jovyan/config-slim.json
+
+COPY ./config-slim.json .
 
 USER jovyan
 
