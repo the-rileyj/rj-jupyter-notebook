@@ -14,8 +14,7 @@ services:
         - rjnet
       user: root
       volumes:
-        - "./apt-get-requirements.txt:/home/jovyan/apt-get-requirements.txt"
-        - "./requirements.txt:/home/jovyan/requirements.txt"
+        - "./dependency-lists:/home/jovyan/dependency-lists"
         - "./notebooks:/home/jovyan/work"
 
 networks:
