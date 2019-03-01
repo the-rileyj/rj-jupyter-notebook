@@ -20,7 +20,7 @@ FROM jupyter/tensorflow-notebook
 
 EXPOSE 80
 
-RUN PYTHONPATH $PYTHONPATH:/home/jovyan/work/Utils/
+ENV PYTHONPATH $PYTHONPATH:/home/jovyan/work/Utils/
 
 USER root
 
