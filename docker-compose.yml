@@ -5,7 +5,7 @@ services:
       build: .
       container_name: "rj-notebook-container"
       environment:
-        - "NB_UID=1001"
+        - "NB_UID=1003"
         - "GRANT_SUDO=yes"
       expose:
         - "8888"

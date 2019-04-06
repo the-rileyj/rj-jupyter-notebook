@@ -1,0 +1,20 @@
+{
+    "dependencies": [
+        {
+            "file-name": "python-dependencies.txt",
+            "command": "pip",
+            "line-match": "([^=]+)==(.*)",
+            "update-dependencies": ["pip", "freeze"],
+            "update-match": "(un)?install",
+            "versioned": true
+        },
+        {
+            "file-name": "apt-dependencies.txt",
+            "command": "apt",
+            "line-match": "(.*)",
+            "update-dependencies": ["apt-mark", "showmanual"],
+            "update-match": "install|remove|up(grade|date)",
+            "versioned": false
+        }
+    ]
+}

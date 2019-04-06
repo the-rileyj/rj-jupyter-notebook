@@ -45,6 +45,9 @@ COPY ./dependency-lists/python-dependencies.txt .
 
 RUN pip install --no-cache-dir -r python-dependencies.txt
 
+RUN jupyter contrib nbextension install --user \
+    jupyter nbextension enable spellchecker/main
+
 # This is to prevent any collisions when we attach the requirements file
 # in the repo for watching changes
 RUN rm python-dependencies.txt && rm apt-dependencies.txt

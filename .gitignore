@@ -1,4 +1,5 @@
 notebooks/*
-!notebooks/.gitkeep
 *.json
 *.out
+!notebooks/.gitkeep
+!config-slim.json
